@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,13 +10,14 @@ namespace Televisore
     {
         bool stato, muto;
         int volume, canale;
-        public TV() {
+        public TV()
+        {
             stato = false;
             volume = 0;
             canale = 1;
             muto = true;
         }
-        public TV(bool s,bool m,int v,int c)
+        public TV(bool s, bool m, int v, int c)
         {
             stato = s;
             volume = v;
@@ -26,15 +27,15 @@ namespace Televisore
 
         public void Accendi()
         {
-            stato=true;
+            stato = true;
         }
         public void Impostocanale(int can)
         {
-            canale = stato?can:1;
+            canale = stato ? can : 1;
         }
         public void canale_next()
         {
-            canale += stato ? (canale < 99?(canale > -1?1:0):0) : 0; //0<=Canali<=99
+            canale += stato ? (canale < 99 ? (canale > -1 ? 1 : 0) : 0) : 0; //0<=Canali<=99
         }
         public void canale_prec()
         {
@@ -46,15 +47,15 @@ namespace Televisore
         }
         public void Aumenta_vol(int volume)
         {
-            if (this.volume + volume >10 && stato)
+            if (this.volume + volume > 10 && stato)
             {
                 do
                 {
                     Console.Write("volume error: Valore inserito invalido.\nReinserire volume:");
                     volume = Convert.ToInt32(Console.ReadLine());
-                } while (this.volume + volume > 10);     
+                } while (this.volume + volume > 10);
             }
-            else if(stato)
+            else if (stato)
             {
                 this.volume += volume;
             }
@@ -65,15 +66,15 @@ namespace Televisore
         }
         public void Diminuisci_vol(int volume)
         {
-            if (this.volume - volume <0 && stato)
+            if (this.volume - volume < 0 && stato)
             {
                 do
                 {
                     Console.Write("volume error: Valore inserito invalido.\nReinserire volume:");
                     volume = Convert.ToInt32(Console.ReadLine());
-                } while (this.volume - volume < 0);     
+                } while (this.volume - volume < 0);
             }
-            else if(stato)
+            else if (stato)
             {
                 this.volume -= volume;
             }
@@ -84,12 +85,13 @@ namespace Televisore
             if (stato)
                 muto = true;
         }
-        public void Stampa()
+        public string Stampa()
         {
             if (stato)
             {
-
+                return "stato:" + (stato ? "accesa" : "spenta") + " " + "volume:" + $"{volume}" + " "  + "canale:" + $"{canale}" + " " + "muto:" + (muto ? "muted" : "unmuted"); 
             }
+            return "";
         }
 
     }
