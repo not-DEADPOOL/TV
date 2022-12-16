@@ -89,7 +89,7 @@ namespace Televisore
         {
             if (stato)
             {
-                return "stato:" + (stato ? "accesa" : "spenta") + " " + "volume:" + $"{volume}" + " "  + "canale:" + $"{canale}" + " " + "muto:" + (muto ? "muted" : "unmuted"); 
+                return "stato:" + (stato ? "accesa" : "spenta") + " | " + "volume:" + $"{volume}" + " | "  + "canale:" + $"{canale}" + " | " + "muto:" + (muto ? "muted" : "unmuted"); 
             }
             return "";
         }
